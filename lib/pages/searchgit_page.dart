@@ -6,7 +6,7 @@ class SearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(_buildSearchAppBar()),
+      appBar: buildSearchAppBar("Keyword"),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
@@ -16,7 +16,7 @@ class SearchPage extends StatelessWidget {
     );
   }
 
-  AppBar _buildSearchAppBar() {
-    return buildSearchAppBar("Keyword");
-  }
+  // AppBar _buildSearchAppBar() {
+  //   return buildSearchAppBar("Keyword");
+  // }
 }

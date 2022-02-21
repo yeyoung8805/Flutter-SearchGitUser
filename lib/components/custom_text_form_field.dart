@@ -6,8 +6,7 @@ class buildSearchAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    return AppBar(
         backgroundColor: Colors.grey,
         title: Container(
           child: Column(
@@ -17,7 +16,7 @@ class buildSearchAppBar extends StatelessWidget {
               TextFormField(
                 validator: (value) =>
                     value!.isEmpty ? "Please enter some text" : null,
-                obscureText: text = "Password" ? true : false,
+                obscureText: text == "Password" ? true : false,
                 decoration: InputDecoration(
                     hintText: "Enter $text",
                     enabledBorder: OutlineInputBorder(
@@ -36,7 +35,7 @@ class buildSearchAppBar extends StatelessWidget {
             ],
           ),
         ),
-      ),
     );
   }
+
 }
