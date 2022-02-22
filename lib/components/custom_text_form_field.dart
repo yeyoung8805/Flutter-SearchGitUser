@@ -1,41 +1,70 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-class buildSearchAppBar extends StatelessWidget {
-  final String text;
-  const buildSearchAppBar(this.text);
+class DefaultSearchField extends StatefulWidget {
+
+  @override
+  _DefaultSearchField createState() => _DefaultSearchField();
+}
+
+class _DefaultSearchField extends State<DefaultSearchField>{
+
+  FocusNode _focusNode = FocusNode();
+  bool isFocus = false;
+
+  @override
+  void initState() {
+    super.initState();
+    SystemChannels.textInput.invokeMethod('TextInput.hide');
+    _focusNode.addListener(() {
+      _onFocusChange();
+    });
+  }
+
+  void _onFocusChange() {
+    setState(() {
+      isFocus = !isFocus;
+    });
+  }
+
+  void _unFocus() {
+    _focusNode.unfocus();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-        backgroundColor: Colors.grey,
-        title: Container(
-          child: Column(
+    return Row(
             children: [
-              Text(text),
-              SizedBox(height: 5.0),
-              TextFormField(
-                validator: (value) =>
-                    value!.isEmpty ? "Please enter some text" : null,
-                obscureText: text == "Password" ? true : false,
-                decoration: InputDecoration(
-                    hintText: "Enter $text",
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    errorBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    focusedErrorBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    )),
+              Expanded(
+                child: TextField(
+                  focusNode: _focusNode,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    filled: true,
+                    fillColor: Colors.grey[100],
+                    hintText: "Enter in your keyword",
+                    prefixIcon: Icon(
+                      Icons.search,
+                      color: Colors.grey,
+                    )
+                  ),
+                ),
               ),
+              Container(
+                width: isFocus? 50  : 0,
+                child: isFocus
+                  ? Center(
+                  child: GestureDetector(
+                    onTap: _unFocus,
+                    child: Text(
+                      "cancel",
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                )
+                    :SizedBox(),
+              )
             ],
-          ),
-        ),
     );
   }
-
 }
