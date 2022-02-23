@@ -62,7 +62,7 @@ class _DefaultSearchField extends State<DefaultSearchField>{
                     ),
                   ),
                 )
-                    :SizedBox(),
+                  :SizedBox(),
               )
             ],
     );
