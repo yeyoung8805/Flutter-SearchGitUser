@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app/networkModule/RetrofitWidget.dart';
 
 class DefaultSearchField extends StatefulWidget {
 
@@ -55,7 +56,10 @@ class _DefaultSearchField extends State<DefaultSearchField>{
                 child: isFocus
                   ? Center(
                   child: GestureDetector(
-                    onTap: _unFocus,
+                    onTap: () {
+                      _unFocus();
+                      RetrofitWidget().createState();
+                    },
                     child: Text(
                       "cancel",
                       style: TextStyle(fontSize: 16),

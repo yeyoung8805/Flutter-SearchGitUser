@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/components/custom_text_form_field.dart';
+import 'package:flutter_app/networkModule/RetrofitWidget.dart';
 
 class SearchPage extends StatelessWidget {
   final List searchKeyword = ["aaa", "bbb", "ccc", "ddd", "eee"];
@@ -17,6 +18,7 @@ class SearchPage extends StatelessWidget {
         child: ListView(
           children: [
             DefaultSearchField(),
+            // RetrofitWidget(),
             const SizedBox(height: 20),
             Container(
               padding: EdgeInsets.symmetric(vertical:10),
@@ -28,6 +30,10 @@ class SearchPage extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
+                        // child: ListTile(
+                          // leading: Image.network(RetrofitWidget().createState().response.avatar_url),
+                          // title: Text(RetrofitWidget().createState().response.login),
+                          // subtitle: Text(RetrofitWidget().createState().response.html_url),
                           searchKeyword[index],
                           style : TextStyle(color: Colors.black, fontSize: 16),
                         ),
