@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_app/networkModule/DataModel.dart';
 import 'package:retrofit/http.dart';
+
 import 'DataModel.dart';
 
 part 'RestClient.g.dart';

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/components/custom_text_form_field.dart';
-import 'package:flutter_app/networkModule/RetrofitWidget.dart';
 
 class SearchPage extends StatelessWidget {
   final List searchKeyword = ["aaa", "bbb", "ccc", "ddd", "eee"];

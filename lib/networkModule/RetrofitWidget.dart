@@ -1,10 +1,10 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/networkModule/DataModel.dart';
 import 'package:flutter_app/networkModule/RestClient.dart';
-
-import 'dart:developer';
 
 class RetrofitWidget extends StatefulWidget {
   @override
